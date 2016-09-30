@@ -3,6 +3,10 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import casilla.CasillaPlanoCartesiano;
+import casilla.Direccion;
+import dron.Dron;
+import dron.DronEntregaDomicilio;
 import intruccion.Instruccion;
 import io.Reader;
 import io.exception.ReaderException;
@@ -14,7 +18,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Reader reader = new Reader("in.txt");
-		Tranformer<?, String> tranformer = new InstruccionTranformer();
+		Tranformer tranformer = new InstruccionTranformer();
+		Dron dronDomicilio = new DronEntregaDomicilio(new CasillaPlanoCartesiano(0, 0, Direccion.NORTE));
 
 		try{
 			List<String> lineas = reader.leerArchivo();
